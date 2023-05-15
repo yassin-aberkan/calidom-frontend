@@ -1,0 +1,13 @@
+<app-product-heading [title]="'Nos Chauffages'"
+                     [filters]="HeatingProductType"
+                     [products]="products"
+                     [category]="CategoryEnumHelper.getCategoryEnum('HEATING')"
+                      (updateProducts)="setProducts($event)">
+
+</app-product-heading>
+<div *ngIf="!loading" class="px-2 md:px-10 py-10">
+  <app-products [products]="products" [category]="CategoryEnumHelper.getCategoryEnum('HEATING')"></app-products>
+</div>
+<div *ngIf="loading" class="mx-auto text-center my-56">
+  <progress class="progress w-56"></progress>
+</div>

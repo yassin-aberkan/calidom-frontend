@@ -1,0 +1,36 @@
+<div class="sm:flex flex-wrap items-center justify-between bg-gray-50 mt-8 py-5 pr-5 pl-12">
+  <ul class="sm:flex flex-wrap items-center justify-start text-gray-900 hidden">
+    <li>
+      <a class="mr-4 hover:underline md:mr-6 cursor-pointer" (click)="cancelProductsType()" [ngClass]="{'text-gray-400': filterSelected != null}">
+        Tous
+      </a>
+    </li>
+    <li *ngFor="let filter of filters">
+      <a class="mr-4 hover:underline md:mr-6 cursor-pointer" (click)="changeProductsType(filter)" [ngClass]="{'text-gray-400': !compareProductEnum(filter)}">
+        {{'products.'+filter| translate}}
+      </a>
+    </li>
+  </ul>
+
+  <div class="dropdown dropdown-bottom sm:hidden mr-4">
+    <label tabindex="0" class="cursor-pointer">
+      <span *ngIf="filterSelected != null">{{'products.'+filterSelected| translate}}</span>
+      <span *ngIf="filterSelected == null">Tous</span><fa-icon class=" ml-1 text-sm text-gray-700" [icon]="chevronIcon"></fa-icon>
+    </label>
+    <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded-box w-52">
+      <li (click)="cancelProductsType()"><a>Tous</a></li>
+      <li *ngFor="let filter of filters" (click)="changeProductsType(filter)"><a>{{'products.'+filter| translate}}</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown dropdown-bottom md:dropdown-end">
+    <label tabindex="0" class="cursor-pointer">Trier par <fa-icon [icon]="filterIcon"></fa-icon>
+    </label>
+    <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded-box w-52">
+      <li (click)="filterBy('POPULAR')"><a>Les plus populaires</a></li>
+      <li (click)="filterBy('LOW_PRICE')"><a>Croissant</a></li>
+      <li (click)="filterBy('HIGH_PRICE')"><a>Décroissant</a></li>
+    </ul>
+  </div>
+</div>

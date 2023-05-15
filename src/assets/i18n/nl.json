@@ -1,0 +1,23 @@
+{
+  "current_language": "Nl",
+  "header": {
+    "products_link": "Producten",
+    "deliver_link": "Levering",
+    "contact_link": "Contact",
+    "other": "Andere",
+    "categories": {
+      "HEATING": "HEATING",
+      "EQUIPMENT": "EQUIPMENT",
+      "SANITARY": "SANITARY"
+    }
+  },
+  "products": {
+    "GAZ_WALL_HEATING" :"Muurgasverwarming",
+    "GAZ_FLOOR_HEATING" :"Vloergasverwarming",
+    "OIL_FLOOR_HEATING" :"Vloerverwarming op stookolie",
+    "BOILER" :"Boiler",
+    "PELLET_HEATER" :"Pelletkachel",
+    "HEATER" :"Radiatoren",
+    "INVALID" :""
+  }
+}

@@ -1,0 +1,12 @@
+<div class="card w-80 xl:w-80 2xl:w-96 bg-base-100 shadow-xl mb-10 lg:mb-0 mx-auto">
+  <figure class="lg:h-48 xl:w-80 2xl:w-96"><img src="{{pathImage}}" alt="{{title}}" class="object-cover h-52 w-full lg:w-96 hover:scale-105 transition duration-500"/></figure>
+  <div class="card-body text-left">
+    <h2 class="text-lg font-medium text-gray-700">{{subTitle | titlecase}}</h2>
+    <div class="flex justify-between text-center my-auto">
+      <h1 class="text-2xl font-bold">{{title | titlecase}}</h1>
+      <a class="text-center my-auto cursor-pointer">
+        <fa-icon [icon]="linkIcon" class="text-center my-auto"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>

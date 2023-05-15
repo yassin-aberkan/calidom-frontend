@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -47,6 +48,9 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
+              ],
+              "content": [
+                "./src/**/*.{html,ts}"
               ],
               "outputHashing": "all"
             },

@@ -1,0 +1,23 @@
+{
+  "current_language": "Fr",
+  "header": {
+    "products_link": "Produits",
+    "deliver_link": "Livraison",
+    "contact_link": "Contacte",
+    "other": "Autre",
+    "categories": {
+      "HEATING": "CHAUDIERE",
+      "EQUIPMENT": "EQUIPEMENT",
+      "SANITARY": "SANITAIRE"
+    }
+  },
+  "products": {
+    "GAZ_WALL_HEATING" :"Chaudière au gaz murale",
+    "GAZ_FLOOR_HEATING" :"Chaudière au gaz sol",
+    "OIL_FLOOR_HEATING" :"Chaudière au mazout sol",
+    "BOILER" :"Boiler",
+    "PELLET_HEATER" :"Poele à pellet",
+    "HEATER" :"Radiateur",
+    "INVALID" :""
+  }
+}

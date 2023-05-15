@@ -1,0 +1,18 @@
+<ul *ngIf="isLoggedIn()" tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+  <li>
+    <a class="justify-between">
+      Profile
+      <span class="badge">New</span>
+    </a>
+  </li>
+  <li><a>Settings</a></li>
+  <li><a (click)="logout()">Déconnexion</a></li>
+</ul>
+
+<ul *ngIf="!isLoggedIn()" tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+  <li><a mat-button (click)="openDialog()">Se Connecter</a></li>
+</ul>
+
+<div class="modal" id="modal-login">
+  <app-login class="w-11/12 max-w-5xl content-center"></app-login>
+</div>

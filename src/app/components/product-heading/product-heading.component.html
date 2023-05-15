@@ -1,0 +1,23 @@
+<hr class="h-px bg-gray-200 border-0">
+
+<div class="px-10 pt-2 relative ">
+  <div class="text-sm breadcrumbs">
+    <ul>
+      <li><a routerLink="/">Acceuil</a></li>
+      <li routerLink="/{{getCurrentLink()}}">
+        <a class="text-emerald-600"> {{'header.categories.'+category | translate | titlecase}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-4xl font-bold text-center">
+    {{title}}
+  </div>
+  <div class="absolute -bottom-5 sm:bottom-0 right-10 text-sm text-gray-500">
+    <span>{{products == null ? 0 : products.length}}{{' '}}</span>
+    <span>produits trouvés</span>
+  </div>
+</div>
+
+<app-filter [filters]="filters" [products]="products" (updateProducts)="setProducts($event)"></app-filter>
+
+
