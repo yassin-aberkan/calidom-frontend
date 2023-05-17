@@ -5,7 +5,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  pathMainImg = 'assets/radiateur.png';
+  pathMainImg = 'assets/radiateur.jpg';
+  isLoading: boolean = true;
 
+  imageLoaded() {
+    this.isLoading = false;
+  }
 
 }

@@ -20,11 +20,15 @@
     </div>
   </div>
 
-  <img
-    alt="Student"
-    [src]="pathMainImg"
-    class="h-56 w-full object-cover sm:h-full sm:rounded-tl-3xl sm:rounded-bl-lg"
-  />
+<!--  <img-->
+<!--    alt=""-->
+<!--    [src]="pathMainImg"-->
+<!--    class="h-56 w-full object-cover sm:h-full sm:rounded-tl-3xl sm:rounded-bl-lg"-->
+<!--  />-->
+  <div class="image-container">
+    <div class="loading-overlay sm:rounded-tl-3xl sm:rounded-bl-lg" [ngClass]="{'show': isLoading}" ></div>
+    <img alt="" [src]="pathMainImg" (load)="imageLoaded()" class="h-56 w-full object-cover sm:h-full sm:rounded-tl-3xl sm:rounded-bl-lg" />
+  </div>
 </section>
 <section>
   <app-features></app-features>
