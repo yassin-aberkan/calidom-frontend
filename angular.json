@@ -49,9 +49,6 @@
                   "maximumError": "4kb"
                 }
               ],
-              "content": [
-                "./src/**/*.{html,ts}"
-              ],
               "outputHashing": "all"
             },
             "development": {
