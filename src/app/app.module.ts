@@ -29,6 +29,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductHeadingComponent } from './components/product-heading/product-heading.component';
 import { FilterComponent } from './components/product-heading/filter/filter.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HeatingDetailPageComponent } from './pages/product-detail-page/heating-detail-page.component';
+import { HeatingDetailComponent } from './components/product/heating-detail/heating-detail.component';
 
 registerLocaleData(localeNl);
 registerLocaleData(localeFr);
@@ -51,6 +53,8 @@ registerLocaleData(localeFr);
     ProductsComponent,
     ProductHeadingComponent,
     FilterComponent,
+    HeatingDetailPageComponent,
+    HeatingDetailComponent,
 
   ],
   imports: [

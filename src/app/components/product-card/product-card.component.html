@@ -1,4 +1,4 @@
-<div class="card w-40 sm:w-64 md:w-52 lg:w-56 xl:w-72 bg-base-100 shadow-xl cursor-pointer">
+<div class="card w-40 sm:w-64 md:w-52 lg:w-56 xl:w-72 bg-base-100 shadow-xl cursor-pointer" [routerLink]="['/chauffages', product.id]">
   <figure><img class="object-cover h-52 xl:h-64 w-full" [src]="product.imageUrl" [alt]="product.name"/></figure>
   <div class="p-3 sm:p-5">
     <h2 class="text-md sm:text-xl font-bold">{{product.name}}</h2>

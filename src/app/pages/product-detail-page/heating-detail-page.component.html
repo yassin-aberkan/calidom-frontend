@@ -1,0 +1,66 @@
+<hr class="h-px bg-gray-200 border-0">
+
+<div class="px-10 pt-2 relative ">
+  <div class="text-sm breadcrumbs">
+    <ul>
+      <li><a routerLink="/">Acceuil</a></li>
+      <li routerLink="/{{getCurrentLink()}}">
+        <a class=""> {{'header.categories.'+category | translate | titlecase}}</a>
+      </li>
+      <li routerLink="/{{getCurrentLink()}}/{{productId}}">
+        <a class="text-emerald-600"> {{heatingProduct?.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="!isLoad">
+  <app-heating-detail [heatingProduct]="heatingProduct"></app-heating-detail>
+</div>
+
+<div class="text-gray-600 body-font overflow-hidden" *ngIf="isLoad">
+  <div class="container px-5 py-12 mx-auto">
+    <div class="lg:w-4/5 mx-auto md:flex ">
+      <div alt="ecommerce" class="image-container w-full bg-gray-200 rounded"></div>
+
+      <div class="w-full md:pl-10 lg:py-6 mb-6 lg:mb-0 md:pt-0 pt-10">
+
+        <div class="flex my-auto justify-between">
+          <div class="my-auto">
+            <h2 class="text-sm title-font text-gray-500 tracking-widest "></h2>
+            <h1 class="text-gray-900 text-3xl title-font font-medium bg-gray-200 px-24 py-5 rounded"></h1>
+          </div>
+        </div>
+
+        <div class="flex mb-4">
+          <a class="flex-grow border-b-2 py-2 text-lg px-1 cursor-pointer">
+            Description
+          </a>
+          <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 cursor-pointer">
+            Details
+          </a>
+        </div>
+        <p class="leading-relaxed mb-4 bg-gray-200 px-12 py-3"></p>
+        <div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Marque</span>
+            <span class="ml-auto text-gray-900 bg-gray-200 px-12 py-3 rounded"></span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2 ">
+            <span class="text-gray-500">Model</span>
+            <span class="ml-auto text-gray-900 bg-gray-200 px-12 py-3 rounded"></span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Quantité</span>
+            <span class="ml-auto text-gray-900 bg-gray-200 px-12 py-3 rounded"></span>
+          </div>
+        </div>
+
+        <div class="flex">
+          <span class="title-font font-medium text-2xl text-gray-900 bg-gray-200 px-12 py- rounded"></span>
+          <button [disabled]="true" class="flex ml-auto text-white bg-emerald-500 border-0 py-2 px-6 focus:outline-none hover:bg-emerald-600 rounded">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
