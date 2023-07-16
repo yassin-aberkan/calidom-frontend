@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {CategoryEnumHelper} from "../../model/enum/category-enum-helper";
 import {TranslateService} from "@ngx-translate/core";
 import {CategoryEnum} from "../../model/enum/category.enum";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-header',
@@ -14,15 +15,18 @@ export class HeaderComponent {
   CategoryEnumHelper = CategoryEnumHelper; // Add this line to your component class
   imageUrl = 'assets/user-icon.png';
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private dateAdapter: DateAdapter<any>,) {
   }
 
   switchLanguage(lang: string) {
     this.translate.use(lang);
+    this.dateAdapter.setLocale(lang);
+    this.translate.setDefaultLang(lang);
+    localStorage.setItem('defaultLang', lang);
   }
 
   get currentLanguage() {
-    return this.translate.currentLang
+    return this.translate.defaultLang
   }
 
   getCurrentLink(category: CategoryEnum): string{

@@ -2,7 +2,7 @@
   <app-product-card *ngFor="let product of products" [product]="product" class="mb-10 mx-auto" [@fadeIn]></app-product-card>
 </div>
 <div *ngIf="products == null || products.length == 0">
-  <section class="bg-white">
+  <section >
     <div class="container flex  mb-40 px-6 py-12 mx-auto">
       <div class="flex flex-col items-center  mx-auto text-center">
         <p class="p-3 text-sm font-medium text-emerald-500 rounded-full bg-emerald-50">

@@ -19,5 +19,36 @@
     "PELLET_HEATER" :"Pelletkachel",
     "HEATER" :"Radiatoren",
     "INVALID" :""
+  },
+  "dateFormats": {
+    "short": "dd/MM/yyyy"
+  },
+  "register": {
+    "title": "Account aanmaken",
+    "subtitle": "U hoeft alleen nog maar uw gegevens in te vullen",
+    "form": {
+      "firstname": "Voornaam",
+      "lastname": "Achternaam",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "dateBirth": "Geboortedatum",
+      "gender": "Geslacht",
+      "gender_type": {
+        "male": "Homme",
+        "female": "Femme",
+        "other": "Autre"
+      },
+      "accept": "Ik accepteer de",
+      "termsAmdConditions": "Voorwaarden en condities",
+      "btn_create": "Account aanmaken",
+      "btn_cancel": "Annuleren",
+      "validator": {
+        "required": "Dit veld is verplicht",
+        "invalidName": "Dit veld kan alleen letters bevatten.",
+        "email": "Het ingevoerde e-mailadres is niet geldig.",
+        "passwordLength": "Het wachtwoord moet minimaal 6 tekens lang zijn.",
+        "minimumAge": "Je moet minimaal 18 jaar oud zijn."
+      }
+    }
   }
 }

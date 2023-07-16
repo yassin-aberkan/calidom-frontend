@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-dialog',
@@ -11,7 +12,7 @@ export class LoginDialogComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private dialogRef: MatDialogRef<LoginDialogComponent>) {}
+  constructor(private authService: AuthService, private dialogRef: MatDialogRef<LoginDialogComponent>, private router: Router) {}
 
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe();
@@ -25,5 +26,11 @@ export class LoginDialogComponent {
 
   protected logOut() {
     this.authService.logout();
+  }
+
+  signup() {
+    this.dialogRef.close();
+    this.router.navigate(['/signup']);
+
   }
 }

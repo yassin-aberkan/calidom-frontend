@@ -1,6 +1,6 @@
-<div class="p-6 text-gray-800">
+<div class="p-6 text-gray-800  rounded-2xl">
     <div class="flex justify-center mx-auto text-2xl font-bold">
-      CALIDOM
+      Calidom
     </div>
 
     <form class="mt-6" (submit)="onSubmit()">
@@ -55,5 +55,5 @@
       </a>
     </div>
 
-    <p class="mt-8 text-xs font-light text-center text-gray-400"> Pas de compte? <a href="#" class="font-medium text-gray-700 hover:underline">Créez-en un</a></p>
+    <p class="mt-8 text-xs font-light text-center text-gray-400"> Pas de compte? <a (click)="signup()" class="font-medium text-gray-700 hover:underline cursor-pointer">Créez-en un</a></p>
 </div>

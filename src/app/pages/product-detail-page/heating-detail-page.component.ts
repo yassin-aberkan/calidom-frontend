@@ -38,7 +38,9 @@ export class HeatingDetailPageComponent  implements OnInit{
       const productId = params['id'];
       this._prductId = productId;
       this.heatingProductService.getHeatingProduct(productId).subscribe(
-        heatingProduct => this._heatingProduct = heatingProduct
+        heatingProduct => {
+          this._heatingProduct = heatingProduct;
+        }
       );
     });
   }

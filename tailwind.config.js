@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#36d384', // Change to your desired primary color
+      },
+    },
   },
   fontFamily: {
     custom: ['Yantramanav', 'sans-serif']

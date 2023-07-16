@@ -19,5 +19,36 @@
     "PELLET_HEATER" :"Poele à pellet",
     "HEATER" :"Radiateur",
     "INVALID" :""
+  },
+  "dateFormats": {
+    "short": "dd/MM/yyyy"
+  },
+  "register": {
+    "title": "Création de compte",
+    "subtitle": "Il ne vous reste plus qu'à renseigner vos informations",
+    "form": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "dateBirth": "Date de naissance",
+      "gender": "Genre",
+      "gender_type": {
+        "male": "Homme",
+        "female": "Femme",
+        "other": "Autre"
+      },
+      "accept": "J'accepte les",
+      "termsAmdConditions": "Termes et Conditions",
+      "btn_create": "Créer le compte",
+      "btn_cancel": "Annulé",
+      "validator": {
+        "required": "Ce champ est requis",
+        "invalidName": "Ce champ ne peut contenir que des lettres.",
+        "email": "L'adresse email saisie n'est pas valide.",
+        "passwordLength": "Le mot de passe doit contenir au minimum 6 caractères.",
+        "minimumAge": "Vous devez avoir minimum 18 ans."
+      }
+    }
   }
 }

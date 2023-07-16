@@ -35,7 +35,7 @@ export class HeatingPageComponent  implements OnInit{
         this.loading = false; // Set loading state to false after fetching products
       },
       (error: any) => {
-        console.error('Error fetching products:', error);
+        console.error(error);
         this.loading = false; // Set loading state to false in case of an error
       }
     );

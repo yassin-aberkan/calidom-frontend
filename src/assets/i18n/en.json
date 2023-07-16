@@ -1,0 +1,55 @@
+
+{
+  "current_language": "En",
+  "header": {
+    "products_link": "Products",
+    "deliver_link": "Delivery",
+    "contact_link": "Contact",
+    "other": "Other",
+    "categories": {
+      "HEATING": "Heating",
+      "EQUIPMENT": "Equipment",
+      "SANITARY": "Sanitary"
+    }
+  },
+  "products": {
+    "GAZ_WALL_HEATING" :"Gas Wall Boiler",
+    "GAZ_FLOOR_HEATING" :"Gas Floor Boiler",
+    "OIL_FLOOR_HEATING" :"Oil Floor Boiler",
+    "BOILER" :"Boiler",
+    "PELLET_HEATER" :"Pellet Stove",
+    "HEATER" :"Heater",
+    "INVALID" :""
+  },
+  "dateFormats": {
+    "short": "MM/dd/yyyy"
+  },
+  "register": {
+    "title": "Account Creation",
+    "subtitle": "You just need to provide your information",
+    "form": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "dateBirth": "Date of Birth",
+      "gender": "Gender",
+      "gender_type": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "accept": "I accept the",
+      "termsAmdConditions": "Terms and Conditions",
+      "btn_create": "Create Account",
+      "btn_cancel": "Cancel",
+      "validator": {
+        "required": "This field is required",
+        "invalidName": "This field can only contain letters.",
+        "email": "The entered email address is not valid.",
+        "passwordLength": "The password must be at least 6 characters long.",
+        "minimumAge": "You must be at least 18 years old."
+      }
+    }
+  }
+}

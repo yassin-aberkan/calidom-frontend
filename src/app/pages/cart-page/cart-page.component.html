@@ -1,0 +1,60 @@
+<section class="px-10 pt-2 relative mb-10">
+  <div class="text-sm breadcrumbs">
+    <ul>
+      <li><a routerLink="/">Acceuil</a></li>
+      <li routerLink="/panier">
+        <a class="text-emerald-600"> Panier</a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-4xl font-bold text-center">
+    Mon Panier
+  </div>
+  <div class="absolute -bottom-5 sm:bottom-0 right-10 text-sm text-gray-500" *ngIf="cartItems">
+    <span>{{cartItems == null ? 0 : cartItems.length}}{{' '}}</span>
+    <span *ngIf="cartItems.length <= 1">produit ajouté</span>
+    <span *ngIf="cartItems.length > 1">produits ajoutés</span>
+  </div>
+</section>
+
+
+<ng-container *ngIf="cartItems && cartItems.length > 0">
+  <section class="md:grid grid-cols-6 px-4 md:px-16 mb-32">
+    <app-carts [carts]="cartItems" (updateCart)="update($event)" class="w-full md:col-span-4 pr-10"></app-carts>
+    <app-cart-checkout [carts]="cartItems" class=" md:col-span-2"></app-cart-checkout>
+  </section>
+</ng-container>
+
+<ng-container *ngIf="cartItems?.length == 0">
+  <section class="md:grid grid-cols-6 px-4 md:px-16 py-20 mb-36">
+    <div class="w-full md:col-span-4 pr-10">
+      <div class="container flex px-6 mx-auto">
+        <div class="flex flex-col items-center  mx-auto text-center">
+          <p class="p-3 text-sm font-medium text-emerald-500 rounded-full bg-emerald-50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+          </p>
+          <h1 class="mt-3 text-2xl font-semibold text-gray-800 md:text-2xl">Aucun produit dans votre panier</h1>
+
+          <div class="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
+            <button routerLink="/" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto hover:bg-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:rotate-180">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+              </svg>
+
+
+              <span>Page Principale</span>
+            </button>
+
+            <button routerLink="/chauffage" class="w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-emerald-600 rounded-lg shrink-0 sm:w-auto hover:bg-emerald-700">
+              Tous les chauffages
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-cart-checkout [carts]="cartItems" class=" md:col-span-2"></app-cart-checkout>
+  </section>
+
+</ng-container>

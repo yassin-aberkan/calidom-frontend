@@ -1,0 +1,119 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <section class="mb-3 text-left">
+    <div>
+      <label for="firstname" class="block text-sm text-gray-800">{{'register.form.firstname' | translate}}</label>
+      <input  id="firstname" type="text" formControlName="firstname"
+              [ngClass]="{'input-error': submitted && firstname?.errors}"
+              class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+      <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+        <span *ngIf="submitted && firstname?.getError('required')">
+          {{'register.form.validator.required' | translate}}
+        </span>
+        <span *ngIf="firstname?.touched && firstname?.getError('invalidName')">
+          {{'register.form.validator.invalidName' | translate}}
+        </span>
+      </div>
+    </div>
+
+  <div>
+    <label for="lastname" class="block text-sm text-gray-800">{{'register.form.lastname' | translate}}</label>
+    <input  id="lastname" type="text" formControlName="lastname"
+            [ngClass]="{'input-error': submitted && lastname?.getError('required')}"
+            class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+    <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+        <span *ngIf="submitted && lastname?.getError('required')">
+          {{'register.form.validator.required' | translate}}
+        </span>
+      <span *ngIf="lastname?.touched && lastname?.getError('invalidName')">
+          {{'register.form.validator.invalidName' | translate}}
+        </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email" class="block text-sm text-gray-800">{{'register.form.email' | translate}}</label>
+    <input  id="email" type="text" formControlName="email"
+            [ngClass]="{'input-error': (submitted && email?.getError('required')) || email?.getError('email')}"
+            class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+    <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+        <span *ngIf="submitted && email?.getError('required')">
+          {{'register.form.validator.required' | translate}}
+        </span>
+      <span *ngIf="email?.touched && email?.getError('email')">
+        {{'register.form.validator.email' | translate}}
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="password" class="block text-sm text-gray-800">{{'register.form.password' | translate}}</label>
+    <div class="relative">
+      <input id="password" type="{{ showPassword ? 'text' : 'password' }}" formControlName="password"
+             [ngClass]="{'input-error': (submitted && password?.getError('required')) || password?.getError('passwordLength')}"
+             class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+      <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 focus:outline-none"
+              (click)="togglePasswordVisibility()">
+
+          <fa-icon [icon]="show" class="text-xl text-gray-600" [ngClass]="{'hidden': showPassword, 'block': !showPassword}" ></fa-icon>
+          <fa-icon [icon]="hide" class="text-xl text-gray-600" [ngClass]="{'hidden': !showPassword, 'block': showPassword}"></fa-icon>
+      </button>
+    </div>
+    <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+    <span *ngIf="submitted && password?.getError('required')">
+      {{'register.form.validator.required' | translate}}
+    </span>
+      <span *ngIf="password?.touched && password?.getError('passwordLength')">
+      {{'register.form.validator.passwordLength' | translate}}
+    </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="dateBirth" class="block text-sm text-gray-800 ">{{'register.form.dateBirth' | translate}}</label>
+      <input id="dateBirth" type="date"  placeholder="Votre date de naissance" formControlName="dateBirth"
+             [ngClass]="{'input-error': (submitted && dateBirth?.getError('required')) || dateBirth?.getError('minimumAge')}"
+             class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border  rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+
+    <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+      <span *ngIf="submitted && dateBirth?.getError('required')">
+        {{'register.form.validator.required' | translate}}
+      </span>
+      <span *ngIf="dateBirth?.touched && dateBirth?.getError('minimumAge')">
+        {{'register.form.validator.minimumAge' | translate}}
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="gender">{{'register.form.gender' | translate}}</label>
+    <select id="gender" formControlName="gender"
+            [ngClass]="{'input-error': submitted && gender?.getError('required')}"
+            class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border  rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+      <option *ngFor="let gender of genders" [value]="gender" class="my-10 text-lg">{{ 'register.form.gender_type.'+gender | lowercase | translate }}</option>
+    </select>
+    <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
+      <span *ngIf="submitted && gender?.getError('required')">
+        {{'register.form.validator.required' | translate}}
+      </span>
+    </div>
+  </div>
+  </section>
+  <div>
+    <div class="mb-5">
+      <label class="flex justify-start space-x-2">
+        <input type="checkbox" class="checkbox checkbox-success" [value]="termsAndConditions" (click)="toggleTermsAndConditions()"/>
+        <span class="label-text my-auto">{{'register.form.accept' | translate}} <a routerLink="/terms-and-conditions"  target="_blank" class="link">{{'register.form.termsAmdConditions' | translate}}</a></span>
+      </label>
+    </div>
+    <div class="w-full">
+      <button [disabled]="loading || !termsAndConditions"
+              [ngClass]="{'disabled bg-gray-400 hover:bg-gray-400': !termsAndConditions}"
+              class="rounded-md py-2 font-medium text-blue-50 bg-emerald-600 rounded-lg hover:bg-emerald-700 mb-3 w-full">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+        {{'register.form.btn_create' | translate}}
+      </button>
+      <a [routerLink]="['../login']" class="link font-bold text-emerald-600 w-full">{{'register.form.btn_cancel' | translate}}</a>
+    </div>
+
+  </div>
+</form>

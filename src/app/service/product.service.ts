@@ -34,6 +34,17 @@ export class ProductService {
     );
   }
 
+  getProduct(productId: number): Observable<Product> {
+    return this.http.get<Product>(environment.baseUrl + this.PRODUCT_URL + productId).pipe(
+      map(product => ({
+        ...product,
+        categoryType: CategoryEnumHelper.getCategoryEnum(product.categoryType),
+        productType: ProductEnumHelper.getProductEnum(product.productType),
+        expiredDate: new Date(product.expiredDate) // Convert expiredDate to Date
+      }))
+    );
+  }
+
   getProductsByCategory(categoryType : CategoryEnum): Observable<Product[]> {
     const params = new HttpParams().set('categoryType', categoryType);
 
