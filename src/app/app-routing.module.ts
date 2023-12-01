@@ -8,14 +8,16 @@ import {RegisterPageComponent} from "./pages/register-page/register-page.compone
 import {
   TermsAndContionsPageComponent
 } from "./pages/register-page/terms-and-contions-page/terms-and-contions-page.component";
+import {LoginPageComponent} from "./pages/login-page/login-page.component";
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'chauffages', component: HeatingPageComponent },
   { path: 'chauffages/:id', component: HeatingDetailPageComponent },
   { path: 'panier', component: CartPageComponent },
-  { path: 'signup', component: RegisterPageComponent },
+  { path: 'register', component: RegisterPageComponent },
   { path: 'terms-and-conditions', component: TermsAndContionsPageComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: '**', redirectTo: '' }
 ];
 

@@ -1,39 +1,54 @@
-import {Component, ViewChild} from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../service/auth.service";
+import {MatDialogRef} from "@angular/material/dialog";
+import {Router} from "@angular/router";
+import {GoogleLoginProvider, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  @ViewChild('modal') modal: any;
-
-
-
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private router: Router,
+  ) {}
 
   onSubmit() {
-    this.authService.login(this.username, this.password).subscribe();
+    this.authService.login(this.username, this.password).subscribe(
+      (isLoggedIn) => {
+        if(isLoggedIn) {
+          this.router.navigate(['/']);
+        }
+      }, error => {
+      }
+    );
+  }
+
+  loginWithGoogle(user: SocialUser){
+    this.authService.loginWithGoogle(user.idToken).subscribe(
+      (isLoggedIn) => {
+        if(isLoggedIn) {
+          this.router.navigate(['/']);
+        }
+      }, error => {
+      }
+    );
   }
 
   protected isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
-    this.closeModal()
   }
 
   protected logOut() {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 
-  openModal() {
-    this.modal.nativeElement.classList.add('is-active');
-  }
-
-  closeModal() {
-    this.modal.nativeElement.classList.remove('is-active');
+  signup() {
+    this.router.navigate(['/register']);
   }
 }

@@ -23,6 +23,10 @@
   "dateFormats": {
     "short": "dd/MM/yyyy"
   },
+  "login": {
+    "title": "Se connecter",
+    "subtitle": "Il ne vous reste plus qu'à renseigner vos informations"
+  },
   "register": {
     "title": "Création de compte",
     "subtitle": "Il ne vous reste plus qu'à renseigner vos informations",
@@ -32,6 +36,7 @@
       "email": "Email",
       "password": "Mot de passe",
       "dateBirth": "Date de naissance",
+      "phoneNumber": "Numéro de téléphone",
       "gender": "Genre",
       "gender_type": {
         "male": "Homme",
@@ -47,7 +52,8 @@
         "invalidName": "Ce champ ne peut contenir que des lettres.",
         "email": "L'adresse email saisie n'est pas valide.",
         "passwordLength": "Le mot de passe doit contenir au minimum 6 caractères.",
-        "minimumAge": "Vous devez avoir minimum 18 ans."
+        "minimumAge": "Vous devez avoir minimum 18 ans.",
+        "invalidPhoneNumber": "Numéro de téléphone invalide."
       }
     }
   }

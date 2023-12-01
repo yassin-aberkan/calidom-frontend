@@ -10,7 +10,7 @@
 </ul>
 <!--class=" menu p-2 shadow bg-base-100 rounded-box"-->
 <ul *ngIf="!isLoggedIn()" tabindex="0" class="dropdown-content z-[1] menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-  <li><a mat-button (click)="openDialog()">Se Connecter</a></li>
+  <li><a mat-button routerLink='/login'>Se Connecter</a></li>
 </ul>
 
 <div class="modal" id="modal-login">

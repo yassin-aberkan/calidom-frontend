@@ -24,6 +24,10 @@
   "dateFormats": {
     "short": "MM/dd/yyyy"
   },
+  "login": {
+    "title": "Login",
+    "subtitle": "You just need to provide your information"
+  },
   "register": {
     "title": "Account Creation",
     "subtitle": "You just need to provide your information",
@@ -34,6 +38,7 @@
       "password": "Password",
       "dateBirth": "Date of Birth",
       "gender": "Gender",
+      "phoneNumber": "Phone number",
       "gender_type": {
         "male": "Male",
         "female": "Female",
@@ -48,7 +53,8 @@
         "invalidName": "This field can only contain letters.",
         "email": "The entered email address is not valid.",
         "passwordLength": "The password must be at least 6 characters long.",
-        "minimumAge": "You must be at least 18 years old."
+        "minimumAge": "You must be at least 18 years old.",
+        "invalidPhoneNumber": "Invalid phone number."
       }
     }
   }

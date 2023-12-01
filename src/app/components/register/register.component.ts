@@ -8,7 +8,7 @@ import {GenderEnum} from "../../model/enum/gender.enum";
 import {
   invalidDateValidator, minimumAgeValidator,
   nameValidator,
-  passwordLengthValidator
+  passwordLengthValidator, phoneNumberValidator
 } from "../../service/custom-validator";
 import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
 import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
@@ -33,7 +33,7 @@ export class RegisterComponent {
     lastname: ['', [Validators.required, nameValidator()]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, passwordLengthValidator()]],
-    dateBirth: ['', [Validators.required, minimumAgeValidator(), invalidDateValidator()]],
+    phoneNumber: ['', [ phoneNumberValidator()]],
     gender: [null, Validators.required],
   });
 
@@ -68,7 +68,7 @@ export class RegisterComponent {
       lastname: this.form.get('lastname')?.value,
       email: this.form.get('email')?.value,
       password: this.form.get('password')?.value,
-      dateBirth: this.form.get('dateBirth')?.value,
+      phoneNumber: this.form.get('phoneNumber')?.value,
       gender: this.form.get('gender')?.value,
     };
   }
@@ -113,8 +113,8 @@ export class RegisterComponent {
     return this.form.get('password');
   }
 
-  get dateBirth() {
-    return this.form.get('dateBirth');
+  get phoneNumber() {
+    return this.form.get('phoneNumber');
   }
 
   get gender() {

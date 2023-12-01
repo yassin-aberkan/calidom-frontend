@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../../../service/auth.service";
 import { MatDialog } from '@angular/material/dialog';
-import {LoginDialogComponent} from "../../login-dialog/login-dialog.component";
+import {LoginComponent} from "../../login/login.component";
 
 @Component({
   selector: 'app-header-login',
@@ -21,7 +21,7 @@ export class HeaderLoginComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(LoginDialogComponent, {
+    const dialogRef = this.dialog.open(LoginComponent, {
       width: '500px',
       autoFocus: true,
     });

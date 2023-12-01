@@ -4,13 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptorService} from "./service/token-interceptor.service";
 import { HeaderLoginComponent } from './components/header/header-login/header-login.component';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { LoginComponent } from './components/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -45,6 +44,17 @@ import { TermsAndContionsPageComponent } from './pages/register-page/terms-and-c
 import {TranslationLoader} from "./service/translation-loader.service";
 import { LoaderPageComponent } from './pages/loader-page/loader-page.component';
 import {LoaderService} from "./service/loader.service";
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleSigninButtonModule, GoogleSigninButtonDirective
+} from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
+import { GoogleSignInComponent } from './components/social-network/google-sign-in/google-sign-in.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+
 
 registerLocaleData(localeFr);
 registerLocaleData(localeNl);
@@ -57,7 +67,7 @@ registerLocaleData(localeNl);
     LoginComponent,
     HeaderComponent,
     HeaderLoginComponent,
-    LoginDialogComponent,
+    LoginComponent,
     HomePageComponent,
     FeaturesComponent,
     ServicesComponent,
@@ -78,31 +88,52 @@ registerLocaleData(localeNl);
     RegisterPageComponent,
     RegisterComponent,
     TermsAndContionsPageComponent,
-    LoaderPageComponent
+    LoaderPageComponent,
+    GoogleSignInComponent,
+    LoginPageComponent
   ],
-    imports: [
-        CommonModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        MatDialogModule,
-        FontAwesomeModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient],
-            },
-          defaultLanguage: 'fr'
-        }),
-        ReactiveFormsModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatDialogModule,
+    FontAwesomeModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'fr'
+    }),
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    GoogleSigninButtonModule
+  ],
   providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '244586122568-29gbsg8o3najjfa94bf94m86ab1qlmth.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },
+    GoogleSigninButtonDirective,
     LoaderService,
     TranslationLoader,
     {

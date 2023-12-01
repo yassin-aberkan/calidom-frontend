@@ -12,6 +12,21 @@ export function futureDateValidator(): ValidatorFn {
   };
 }
 
+
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+    const phoneNumberRegex = /^\d{10,}$/; // Regex to check if phone number consists of at least 10 digits
+
+    const phoneNumber = control.value;
+
+    if (!phoneNumberRegex.test(phoneNumber)) {
+      return { invalidPhoneNumber: true };
+    }
+
+    return null;
+  };
+}
+
 export function minimumAgeValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     const dateOfBirth = new Date(control.value);

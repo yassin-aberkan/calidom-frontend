@@ -1,43 +1,41 @@
-<div class="navbar bg-base-100">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Item 1</a></li>
-        <li tabindex="0">
-          <a class="justify-between">
-            Parent
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
-          </a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
+<div class="p-6 text-gray-800  rounded-2xl">
+    <form class="text-left" (submit)="onSubmit()">
+      <div>
+        <label for="email" class="block text-sm text-gray-800">Email Address</label>
+        <input  id="email" type="email" [(ngModel)]="username" name="username"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+      </div>
+
+      <div class="mt-4">
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm text-gray-800">Mot de passe</label>
+          <a href="#" class="text-xs text-gray-600 hover:underline">Mot de passe oublié ?</a>
+        </div>
+
+        <input id="password" type="password" [(ngModel)]="password" name="password"
+               class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+      </div>
+
+      <div class="mt-6">
+        <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+          Se Connecter
+        </button>
+      </div>
+    </form>
+
+    <div class="flex items-center justify-between mt-4">
+      <span class="w-1/5 border-b lg:w-1/5"></span>
+
+      <a href="#" class="text-xs text-center text-gray-500 uppercase hover:underline">
+        ou se connecter avec un réseau social
+      </a>
+
+      <span class="w-1/5 border-b lg:w-1/5"></span>
     </div>
-    <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li tabindex="0">
-        <a>
-          Parent
-          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-        </a>
-        <ul class="p-2">
-          <li><a>Submenu 1</a></li>
-          <li><a>Submenu 2</a></li>
-        </ul>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end">
-    <a class="btn">Get started</a>
-  </div>
+
+    <div class="flex items-center h-6 py-8 justify-center">
+      <app-google-sign-in (socialUser)="loginWithGoogle($event)"></app-google-sign-in>
+    </div>
+
+    <p class="text-xs font-light text-center text-gray-400 w-"> Pas de compte? <a (click)="signup()" class="font-medium text-gray-700 hover:underline cursor-pointer">Créez-en un</a></p>
 </div>

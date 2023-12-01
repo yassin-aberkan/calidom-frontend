@@ -23,6 +23,10 @@
   "dateFormats": {
     "short": "dd/MM/yyyy"
   },
+  "login": {
+    "title": "Inloggen",
+    "subtitle": "U hoeft alleen nog maar uw gegevens in te vullen"
+  },
   "register": {
     "title": "Account aanmaken",
     "subtitle": "U hoeft alleen nog maar uw gegevens in te vullen",
@@ -33,6 +37,7 @@
       "password": "Wachtwoord",
       "dateBirth": "Geboortedatum",
       "gender": "Geslacht",
+      "phoneNumber": "Telefoonnummer",
       "gender_type": {
         "male": "Homme",
         "female": "Femme",
@@ -47,7 +52,8 @@
         "invalidName": "Dit veld kan alleen letters bevatten.",
         "email": "Het ingevoerde e-mailadres is niet geldig.",
         "passwordLength": "Het wachtwoord moet minimaal 6 tekens lang zijn.",
-        "minimumAge": "Je moet minimaal 18 jaar oud zijn."
+        "minimumAge": "Je moet minimaal 18 jaar oud zijn.",
+        "invalidPhoneNumber": "Ongeldig telefoonnummer."
       }
     }
   }
