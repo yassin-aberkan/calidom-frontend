@@ -1,5 +1,4 @@
-import {faFaucet, faFire, faGlassWater, faQuestion, faTemperatureFull} from "@fortawesome/free-solid-svg-icons";
-import {ProductEnum} from "./product.enum";
+import {faFaucet, faFire, faQuestion, faTemperatureFull} from "@fortawesome/free-solid-svg-icons";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {CategoryEnum} from "./category.enum";
 

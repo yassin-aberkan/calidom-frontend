@@ -1,4 +1,3 @@
-import {CategoryEnum} from "./category.enum";
 import {ProductEnum} from "./product.enum";
 
 export class ProductEnumHelper{
