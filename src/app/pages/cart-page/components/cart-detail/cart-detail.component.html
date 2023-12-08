@@ -1,0 +1,49 @@
+<div class="flex justify-start  p-4 rounded" *ngIf="product">
+  <img alt="ecommerce" class="image-container h-48 object-center rounded" [src]="product.imageUrl">
+  <div class="ml-4 flex justify-between w-full">
+
+
+    <div class="flex flex-col justify-between">
+      <div class="">
+        <div class="font-light text-gray-400">Ref :{{product.id}}</div>
+        <div class="font-bold text-xl">{{product.name}}</div>
+        <div class="font-light text-lg text-gray-400">{{'products.'+product.productType | translate | uppercase}}</div>
+      </div>
+
+      <div>
+        <button class="link link-error " (click)="delete()">Supprimer</button>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between">
+      <select [(ngModel)]="selectedQuantity"
+              aria-label="Select quantity" class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
+        <option *ngFor="let nb_quantity of quantities" [value]="nb_quantity">{{nb_quantity | number:'2.0-0'}}</option>
+      </select>
+      <div class="title-font font-medium text-xl text-gray-900 text-center mt-4">
+        {{product.price * selectedQuantity}} €
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-start p-4 rounded" *ngIf="!product">
+  <div class="skeleton w-48 h-48"></div>
+  <div class="ml-4 flex justify-between w-full">
+    <div class="flex flex-col justify-between">
+      <div class="">
+        <div class="skeleton w-8 h-4 mb-2"></div>
+        <div class="skeleton w-24 h-8 mb-2"></div>
+      </div>
+
+      <div>
+        <div class="skeleton w-20 h-4"></div>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between">
+      <div class="skeleton w-12 h-8"></div>
+      <div class="skeleton w-12 h-8"></div>
+    </div>
+  </div>
+</div>

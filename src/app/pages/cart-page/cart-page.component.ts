@@ -1,12 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {CartService} from "../../service/cart.service";
-import {Product} from "../../model/product";
-import {Cart} from "../../model/cart";
+import {CartService} from "../../core/adapters/cart.service";
+import {Cart} from "../../core/models/cart";
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
+import { CartsComponent } from './components/carts/carts.component';
+import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-cart-detail-page',
-  templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss']
+    selector: 'app-cart-detail-page',
+    templateUrl: './cart-page.component.html',
+    styleUrls: ['./cart-page.component.scss'],
+    standalone: true,
+    imports: [RouterLink, NgIf, CartsComponent, CartCheckoutComponent]
 })
 export class CartPageComponent implements OnInit{
   private _carts: Array<Cart> | undefined;

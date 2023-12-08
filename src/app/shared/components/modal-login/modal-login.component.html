@@ -1,0 +1,21 @@
+<div class="my-5 mx-3">
+    <form>
+      <button (click)="close()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="text-center mb-4">
+      <span class="text-2xl font-bold">
+        {{'login.title' | translate}}
+      </span>
+      <div class="text-xs">
+        {{'login.subtitle' | translate}}
+      </div>
+    </h3>
+  <div class="px-6">
+    <app-login (handleLogin)="isLoggedIn($event)"></app-login>
+    <p class="text-xs font-light text-center text-gray-400 w-"> Pas de compte? <a (click)="signup()"
+                                                                                  class="font-medium text-gray-700 hover:underline cursor-pointer">Créez-en
+      un</a></p>
+  </div>
+
+</div>
+

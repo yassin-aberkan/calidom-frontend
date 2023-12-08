@@ -7,8 +7,8 @@ import {CartPageComponent} from "./pages/cart-page/cart-page.component";
 import {RegisterPageComponent} from "./pages/register-page/register-page.component";
 import {
   TermsAndContionsPageComponent
-} from "./pages/register-page/terms-and-contions-page/terms-and-contions-page.component";
-import {LoginPageComponent} from "./pages/login-page/login-page.component";
+} from "./shared/components/terms-and-contions-page/terms-and-contions-page.component";
+
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'panier', component: CartPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'terms-and-conditions', component: TermsAndContionsPageComponent },
-  { path: 'login', component: LoginPageComponent },
   { path: '**', redirectTo: '' }
 ];
 

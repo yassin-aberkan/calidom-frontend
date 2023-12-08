@@ -1,13 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {HeatingProduct} from "../../model/heating-product";
-import {HeatingProductService} from "../../service/heating-product.service";
-import {CategoryEnum} from "../../model/enum/category.enum";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import {HeatingProduct} from "../../core/models/heating-product";
+import {HttpHeatingProductGateway} from "../../core/adapters/http-heating-product.gateway";
+import {CategoryEnum} from "../../core/models/enum/enum/category.enum";
+import { TranslateModule } from '@ngx-translate/core';
+import { HeatingDetailComponent } from '../../shared/components/product/heating-detail/heating-detail.component';
+import { NgIf, TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-product-detail-page',
-  templateUrl: './heating-detail-page.component.html',
-  styleUrls: ['./heating-detail-page.component.scss']
+    selector: 'app-product-detail-page',
+    templateUrl: './heating-detail-page.component.html',
+    styleUrls: ['./heating-detail-page.component.scss'],
+    standalone: true,
+    imports: [RouterLink, NgIf, HeatingDetailComponent, TitleCasePipe, TranslateModule]
 })
 export class HeatingDetailPageComponent  implements OnInit{
 
@@ -15,7 +20,7 @@ export class HeatingDetailPageComponent  implements OnInit{
   private  _category?: CategoryEnum;
   private _heatingProduct?: HeatingProduct;
 
-  constructor(private route: ActivatedRoute, private heatingProductService: HeatingProductService) { }
+  constructor(private route: ActivatedRoute, private heatingProductService: HttpHeatingProductGateway) { }
 
   ngOnInit() {
     this.getParams();
