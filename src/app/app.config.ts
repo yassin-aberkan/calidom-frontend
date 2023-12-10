@@ -6,7 +6,6 @@ import {registerLocaleData} from "@angular/common";
 import {TranslationLoader} from "./shared/services/translation-loader.service";
 import {LoaderService} from "./shared/services/loader.service";
 import {APP_INITIALIZER, ApplicationConfig, importProvidersFrom, LOCALE_ID} from "@angular/core";
-import {AppRoutingModule} from "./app-routing.module";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {MatNativeDateModule} from "@angular/material/core";
 import {GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
@@ -16,6 +15,13 @@ import {HeatingProductGateway} from "./core/ports/heating-product.gateway";
 import {HttpHeatingProductGateway} from "./core/adapters/http-heating-product.gateway";
 import {ProductGateway} from "./core/ports/product.gateway";
 import {HttpProductGateway} from "./core/adapters/http-product.gateway";
+import {provideRouter} from "@angular/router";
+import {routes} from "./app-routes";
+import {AuthGateway} from "./core/ports/auth.gateway";
+import {HttpAuthGateway} from "./core/adapters/http-auth.gateway";
+import {CartGateway} from "./core/ports/cart.gateway";
+import {InMemoryCartService} from "./core/adapters/in-memory-cart.service";
+import {AuthenticationService} from "./shared/services/authentication.service";
 
 registerLocaleData(localeFr);
 registerLocaleData(localeNl);
@@ -44,8 +50,10 @@ const socialAuthServiceConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideRouter(routes),
+    provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
-      AppRoutingModule,
       TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -64,12 +72,13 @@ export const appConfig: ApplicationConfig = {
       multi: true,
     },
     socialAuthServiceConfig,
+    AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     { provide: LOCALE_ID, useValue: 'fr' },
     { provide: HeatingProductGateway, useFactory: () => new HttpHeatingProductGateway() },
     { provide: ProductGateway, useFactory: () => new HttpProductGateway() },
-    provideAnimations(),
-    provideHttpClient(withInterceptorsFromDi())
+    { provide: AuthGateway, useFactory: () => new HttpAuthGateway() },
+    { provide: CartGateway, useFactory: () => new InMemoryCartService() },
   ]
 }
 

@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import {AuthService} from "../../../../core/adapters/auth.service";
+import {HttpAuthGateway} from "../../../../core/adapters/http-auth.gateway";
 import {first} from "rxjs/operators";
 import {RegisterRequest} from "../../../../core/models/register-request";
 import {GenderEnum} from "../../../../core/models/enum/enum/gender.enum";
@@ -27,7 +27,7 @@ export class RegisterComponent {
   formBuilder = inject(FormBuilder);
   route = inject(ActivatedRoute);
   router = inject(Router);
-  authService = inject(AuthService);
+  authService = inject(HttpAuthGateway);
 
   private _loading = false;
   private _submitted = false;

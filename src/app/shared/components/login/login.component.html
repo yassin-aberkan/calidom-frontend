@@ -5,7 +5,7 @@
       <input id="login-email" type="email" formControlName="username" name="username"
              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
       <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
-          <span *ngIf="submitted && username?.getError('required')">
+          <span *ngIf="username?.touched && username?.getError('required')">
             {{'register.form.validator.required' | translate}}
           </span>
       </div>
@@ -20,7 +20,7 @@
       <input id="login-password" type="password" formControlName="password" name="password"
              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
       <div class="h-5 flex items-center font-medium tracking-wide text-red-500 text-xs">
-          <span *ngIf="submitted && password?.getError('required')">
+          <span *ngIf="password?.touched && password?.getError('required')">
             {{'register.form.validator.required' | translate}}
           </span>
       </div>

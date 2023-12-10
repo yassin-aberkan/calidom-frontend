@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartService} from "../../core/adapters/cart.service";
+import {InMemoryCartService} from "../../core/adapters/in-memory-cart.service";
 import {Cart} from "../../core/models/cart";
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 import { CartsComponent } from './components/carts/carts.component';
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class CartPageComponent implements OnInit{
   private _carts: Array<Cart> | undefined;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: InMemoryCartService) {
   }
 
   ngOnInit(): void {

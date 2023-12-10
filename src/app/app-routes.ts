@@ -10,18 +10,35 @@ import {
 } from "./shared/components/terms-and-contions-page/terms-and-contions-page.component";
 
 
-const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'chauffages', component: HeatingPageComponent },
-  { path: 'chauffages/:id', component: HeatingDetailPageComponent },
-  { path: 'panier', component: CartPageComponent },
-  { path: 'register', component: RegisterPageComponent },
-  { path: 'terms-and-conditions', component: TermsAndContionsPageComponent },
-  { path: '**', redirectTo: '' }
+export const routes: Routes = [
+  {
+    path: '',
+    component: HomePageComponent
+  },
+  {
+    path: 'chauffages',
+    component: HeatingPageComponent
+  },
+  {
+    path: 'chauffages/:id',
+    component: HeatingDetailPageComponent
+  },
+  {
+    path: 'panier',
+    component: CartPageComponent
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent
+  },
+  {
+    path: 'terms-and-conditions',
+    component: TermsAndContionsPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+

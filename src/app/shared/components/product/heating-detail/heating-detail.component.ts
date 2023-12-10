@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {HeatingProduct} from "../../../../core/models/heating-product";
 import { TranslateService, TranslateModule } from "@ngx-translate/core";
-import {CartService} from "../../../../core/adapters/cart.service";
+import {InMemoryCartService} from "../../../../core/adapters/in-memory-cart.service";
 import {AbstractProduct} from "../product-abstract";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Router} from "@angular/router";
@@ -37,7 +37,7 @@ export class HeatingDetailComponent extends AbstractProduct{
   cartState: 'idle' | 'added' = 'idle';
 
 
-  constructor(translateService: TranslateService,cartService: CartService, router: Router) {
+  constructor(translateService: TranslateService, cartService: InMemoryCartService, router: Router) {
     super(translateService, cartService, router);
   }
 

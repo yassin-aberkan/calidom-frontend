@@ -1,7 +1,7 @@
 import {Input, OnInit} from "@angular/core";
 import {LanguageEnumHelper} from "../../../core/models/enum/enum/language-enum-helper";
 import {TranslateService} from "@ngx-translate/core";
-import {CartService} from "../../../core/adapters/cart.service";
+import {InMemoryCartService} from "../../../core/adapters/in-memory-cart.service";
 import { Injectable } from '@angular/core';
 import {Product} from "../../../core/models/product";
 import {Router} from "@angular/router";
@@ -16,7 +16,7 @@ export abstract class AbstractProduct implements OnInit {
 
   descriptionToggle = true;
 
-  protected constructor(private translateService: TranslateService, private cartService: CartService, private router: Router) {
+  protected constructor(private translateService: TranslateService, private cartService: InMemoryCartService, private router: Router) {
   }
 
   ngOnInit(): void {

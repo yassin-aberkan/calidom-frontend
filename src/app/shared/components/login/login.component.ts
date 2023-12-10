@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {AuthService} from "../../../core/adapters/auth.service";
+import {Component, EventEmitter, inject, Output} from '@angular/core';
+import {HttpAuthGateway} from "../../../core/adapters/http-auth.gateway";
 import {SocialUser} from "@abacritt/angularx-social-login";
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { GoogleSignInComponent } from '../google-sign-in/google-sign-in.component';
 import { NgIf } from '@angular/common';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
     selector: 'app-login',
@@ -15,17 +16,14 @@ import { NgIf } from '@angular/common';
 })
 export class LoginComponent {
 
+  authenticationService = inject(AuthenticationService);
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  _submitted = false;
-
   @Output() handleLogin = new EventEmitter <boolean>;
-
-  constructor(private authService: AuthService) {
-  }
 
   get username() {
     return this.loginForm.get('username');
@@ -35,29 +33,23 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  get submitted(): boolean {
-    return this._submitted
-  }
-
   onSubmit() {
-    this._submitted = true;
+    this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       const {username, password} = this.loginForm.value;
-      this.authService.login(username!, password!).subscribe(
-        (isLoggedIn) => {
-          this.handleLogin.emit(isLoggedIn);
-        },
-        (error) => this.handleLogin.emit(false)
+      this.authenticationService.login(username!, password!).subscribe(
+        (isAuthenticated) => {
+          this.handleLogin.emit(isAuthenticated);
+        }
       );
     }
   }
 
   protected loginWithGoogle(user: SocialUser) {
-    this.authService.loginWithGoogle(user.idToken).subscribe(
-      (isLoggedIn) => {
-        this.handleLogin.emit(isLoggedIn);
-      },
-      (error) => this.handleLogin.emit(false)
+    this.authenticationService.loginWithGoogle(user.idToken).subscribe(
+      (isAuthenticated) => {
+        this.handleLogin.emit(isAuthenticated);
+      }
     );
   }
 

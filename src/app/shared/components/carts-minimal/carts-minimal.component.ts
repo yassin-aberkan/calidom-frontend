@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartService} from "../../../core/adapters/cart.service";
+import {InMemoryCartService} from "../../../core/adapters/in-memory-cart.service";
 import {Product} from "../../../core/models/product";
 import {Cart} from "../../../core/models/cart";
 import {HttpProductGateway} from "../../../core/adapters/http-product.gateway";
@@ -18,7 +18,7 @@ export class CartsMinimalComponent implements OnInit{
 
   private _cartItems: Array<Cart> | undefined;
 
-  constructor(private cartService: CartService, private productService: HttpProductGateway) {
+  constructor(private cartService: InMemoryCartService, private productService: HttpProductGateway) {
   }
 
   ngOnInit(): void {

@@ -5,13 +5,8 @@ import {HttpProductGateway} from "./http-product.gateway";
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-  private _cartItems: Cart[] = [];
-
-
-  constructor() {
-    this.loadCart();
-  }
+export class InMemoryCartService {
+  private _cartItems: Cart[] = this.loadCart();
 
   get cartItems() {
     return this._cartItems;
@@ -49,9 +44,9 @@ export class CartService {
     localStorage.setItem('cart-detail', JSON.stringify(this.cartItems));
   }
 
-  private loadCart(): void {
+  private loadCart(): Cart[] {
     const cartItemsJson = localStorage.getItem('cart-detail');
-    this._cartItems = cartItemsJson ? JSON.parse(cartItemsJson) : [];
+    return cartItemsJson ? JSON.parse(cartItemsJson) : [];
   }
 
 }
