@@ -1,7 +1,7 @@
 import {AuthGateway} from "../../core/ports/auth.gateway";
 import {inject, Injectable} from "@angular/core";
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import {catchError, Observable, of} from "rxjs";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import {BehaviorSubject, catchError, Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
 
@@ -10,13 +10,18 @@ export class AuthenticationService {
   private authGateway= inject(AuthGateway)
   private socialAuthService = inject(SocialAuthService);
 
+  private _isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.retrievesAuthenticated());
+  public isAuthenticated$: Observable<boolean> = this._isAuthenticatedSubject.asObservable();
+
   login(email: string, password: string): Observable<boolean> {
     return this.authGateway.login(email, password).pipe(
       map((token: string) => {
-        localStorage.setItem('userToken', token);
-        return true;
+        this.updateAuthentication(token);
+        return this.retrievesAuthenticated();
       }),
       catchError(() => {
+        localStorage.removeItem('userToken');
+        this._isAuthenticatedSubject.next(false);
         return of(false);
       })
     );
@@ -25,10 +30,12 @@ export class AuthenticationService {
   loginWithGoogle(googleIdToken: string): Observable<boolean> {
     return this.authGateway.loginWithGoogle(googleIdToken).pipe(
       map((token: string) => {
-        localStorage.setItem('userToken', token);
-        return true;
+        this.updateAuthentication(token);
+        return this.retrievesAuthenticated();
       }),
       catchError(() => {
+        localStorage.removeItem('userToken');
+        this._isAuthenticatedSubject.next(false);
         return of(false);
       })
     );
@@ -37,25 +44,32 @@ export class AuthenticationService {
   register(email: string, password: string): Observable<boolean> {
     return this.authGateway.register(email, password).pipe(
       map((token: string) => {
-        localStorage.setItem('userToken', token);
-        return true;
+        this.updateAuthentication(token);
+        return this.retrievesAuthenticated();
       }),
       catchError(() => {
+        localStorage.removeItem('userToken');
+        this._isAuthenticatedSubject.next(false);
         return of(false);
       })
     );
-  }
-
-  public isAuthenticated() : boolean {
-    const token = localStorage.getItem('authToken');
-    const helper = new JwtHelperService();
-    const isExpired = helper.isTokenExpired(token);
-    return !isExpired;
   }
 
   logout(): void {
     localStorage.removeItem('userToken');
     this.socialAuthService.signOut().finally()
     window.location.href = '';
+  }
+
+  private updateAuthentication(token: string): void {
+    localStorage.setItem('userToken', token);
+    this._isAuthenticatedSubject.next(this.retrievesAuthenticated());
+  }
+
+  private retrievesAuthenticated() : boolean {
+    const token = localStorage.getItem('userToken');
+    const helper = new JwtHelperService();
+    const isExpired = helper.isTokenExpired(token!);
+    return !isExpired;
   }
 }

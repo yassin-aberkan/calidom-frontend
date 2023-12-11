@@ -1,4 +1,4 @@
-import {Directive, inject} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {AuthenticationService} from "../services/authentication.service";
 
@@ -9,12 +9,14 @@ import {AuthenticationService} from "../services/authentication.service";
     directive: NgIf
   }]
 })
-export class IfNotAuthenticatedDirective {
+export class IfNotAuthenticatedDirective implements OnInit {
 
   private authenticationService = inject(AuthenticationService);
   private ngIfDirective = inject(NgIf);
+
   ngOnInit() {
-    this.ngIfDirective.ngIf = !this.authenticationService.isAuthenticated();
-  }
+    this.authenticationService.isAuthenticated$.subscribe(isAuthenticated => {
+      this.ngIfDirective.ngIf = !isAuthenticated;
+    });  }
 
 }

@@ -1,9 +1,10 @@
 import {inject, Injectable} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {catchError, Observable, of} from 'rxjs';
 import {environment} from "../../../environments/environment";
 import {RegisterRequest} from "../models/register-request"
 import {Product} from "../models/product";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,14 @@ export class HttpAuthGateway {
 
   loginWithGoogle(googleIdToken: string): Observable<string> {
     const GoogleLoginRequest = { googleIdToken };
-    return this.http.post<string>(environment.baseUrl + this.LOGIN_GOOGLE, GoogleLoginRequest);
+    return this.http.post<string>(environment.baseUrl + this.LOGIN_GOOGLE, GoogleLoginRequest).pipe(
+      map((result: any) => {
+        return result.access_token
+      }),
+      catchError(() => {
+        return of('');
+      })
+    );
   }
 
   register(registerRequest: RegisterRequest): Observable<string> {
