@@ -1,3 +1,4 @@
+import { TuiRootModule } from "@taiga-ui/core";
 import {HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import localeNl from '@angular/common/locales/nl';
@@ -62,7 +63,7 @@ export const appConfig: ApplicationConfig = {
       },
       defaultLanguage: 'fr'
     }),
-      MatNativeDateModule),
+      MatNativeDateModule, TuiRootModule),
     LoaderService,
     TranslationLoader,
     {

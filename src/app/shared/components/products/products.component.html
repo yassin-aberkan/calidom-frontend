@@ -1,7 +1,10 @@
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4" *ngIf="products != null && products.length > 0">
-  <app-product-card *ngFor="let product of products" [product]="product" class="mb-10 mx-auto" [@fadeIn]></app-product-card>
-</div>
-<div *ngIf="products == null || products.length == 0">
+@if (products != null && products.length > 0) {
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    @for (product of products; track product.id) {
+      <app-product-card [product]="product" class="mb-10 mx-auto" [@fadeIn]></app-product-card>
+    }
+  </div>
+} @else {
   <section >
     <div class="container flex  mb-40 px-6 py-12 mx-auto">
       <div class="flex flex-col items-center  mx-auto text-center">
@@ -18,8 +21,6 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:rotate-180">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
             </svg>
-
-
             <span>Page Principale</span>
           </button>
 
@@ -30,4 +31,5 @@
       </div>
     </div>
   </section>
-</div>
+}
+

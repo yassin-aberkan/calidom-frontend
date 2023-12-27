@@ -6,13 +6,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { GoogleSignInComponent } from '../google-sign-in/google-sign-in.component';
 import { NgIf } from '@angular/common';
 import {AuthenticationService} from "../../services/authentication.service";
+import {TuiInputCountModule, TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
+import {TuiTextfieldControllerModule} from "@taiga-ui/core";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NgIf, GoogleSignInComponent, TranslateModule]
+  imports: [FormsModule, ReactiveFormsModule, NgIf, GoogleSignInComponent, TranslateModule, TuiInputCountModule, TuiInputModule, TuiTextfieldControllerModule, TuiInputPasswordModule]
 })
 export class LoginComponent {
 

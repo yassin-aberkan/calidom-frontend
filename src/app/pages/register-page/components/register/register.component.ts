@@ -13,14 +13,22 @@ import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
 import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 import { TranslateModule } from '@ngx-translate/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { NgClass, NgIf, NgFor, LowerCasePipe } from '@angular/common';
+import {NgClass, NgIf, NgFor, LowerCasePipe, CommonModule} from '@angular/common';
+import {
+  TuiDataListWrapperModule,
+  TuiFieldErrorPipeModule,
+  TuiInputModule,
+  TuiInputPasswordModule, TuiInputPhoneModule,
+  TuiSelectModule
+} from "@taiga-ui/kit";
+import {TuiDataListModule, TuiErrorModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NgClass, NgIf, FaIconComponent, NgFor, RouterLink, LowerCasePipe, TranslateModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgClass, NgIf, FaIconComponent, NgFor, RouterLink, LowerCasePipe, TranslateModule, TuiFieldErrorPipeModule, TuiInputModule, TuiErrorModule, TuiSelectModule, TuiDataListWrapperModule, TuiDataListModule, TuiTextfieldControllerModule, TuiInputPasswordModule, TuiInputPhoneModule]
 })
 export class RegisterComponent {
 
@@ -30,8 +38,6 @@ export class RegisterComponent {
   authService = inject(HttpAuthGateway);
 
   private _loading = false;
-  private _submitted = false;
-  private _showPassword = false;
   private _termsAndConsitions = false;
 
   show = faEye;
@@ -45,9 +51,10 @@ export class RegisterComponent {
     gender: [null, Validators.required],
   });
 
+  genders = [GenderEnum.MALE, GenderEnum.FEMALE, GenderEnum.OTHER];
 
   onSubmit() {
-    this._submitted = true;
+    this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
@@ -76,24 +83,13 @@ export class RegisterComponent {
     };
   }
 
-  togglePasswordVisibility() {
-    this._showPassword = !this._showPassword;
-  }
   toggleTermsAndConditions() {
     this._termsAndConsitions = !this._termsAndConsitions;
 
   }
 
-  get submitted(): boolean {
-    return this._submitted
-  }
-
   get loading(): boolean {
     return this._loading
-  }
-
-  get showPassword(): boolean {
-    return this._showPassword
   }
 
   get termsAndConditions(): boolean {
@@ -122,9 +118,5 @@ export class RegisterComponent {
 
   get gender() {
     return this.form.get('gender');
-  }
-
-  get genders(): GenderEnum[] {
-    return  Object.values(GenderEnum);
   }
 }

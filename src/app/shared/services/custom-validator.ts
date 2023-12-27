@@ -15,7 +15,8 @@ export function futureDateValidator(): ValidatorFn {
 
 export function phoneNumberValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
-    const phoneNumberRegex = /^\d{10,}$/; // Regex to check if phone number consists of at least 10 digits
+    // Regex pour accepter divers formats de numéro de téléphone
+    const phoneNumberRegex = /^(\+\d{1,4}\s?)?(\d{1,4}[-.\s]?){1,5}\d{1,10}$/;
 
     const phoneNumber = control.value;
 

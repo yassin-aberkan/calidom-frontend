@@ -1,3 +1,4 @@
+import { TuiRootModule, TuiDialogModule, TuiAlertModule } from "@taiga-ui/core";
 import {Component, OnInit} from '@angular/core';
 import {TranslationLoader} from "./shared/services/translation-loader.service";
 import { RouterOutlet } from '@angular/router';
@@ -8,7 +9,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [LayoutComponent, RouterOutlet],
+    imports: [LayoutComponent, RouterOutlet, TuiRootModule, TuiDialogModule, TuiAlertModule],
 })
 export class AppComponent implements OnInit {
   isLoading: boolean = true;
